@@ -13,8 +13,8 @@ namespace UnitTestProject1
         [TestMethod]        // Метод тестер
         public void SumTest()
         {
-            var calc = new C.Calc();          // Объявление экземпляра класса
-            var result = calc.Sum(1, 2);
+            var calc = new C.Calc(new Calc.IOperation[] { new Calc.SumOperation() });          // Объявление экземпляра класса
+            var result = calc.Execute("Sum", new object[] { 1, 2 });
             Assert.AreEqual(result, 3);
         }
     }
