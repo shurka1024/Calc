@@ -14,8 +14,16 @@ namespace ConsoleApplication1
 
         static void Main(string[] args)
         {
+            if (!args.Any())
+            {
+                Console.WriteLine("calc.exe \"Sum\" \"1\" \"2\"");
+                Console.ReadKey();
+                return;
+            }
+
             var operations = new List<IOperation>();
 
+            #region Получение всех возможных операций
             // Найти файлы dll и exe в текущей директории
             var files = Directory.GetFiles(Environment.CurrentDirectory, "*.dll")   // Найдет все наши dll
             .Union( Directory.GetFiles(Environment.CurrentDirectory, "*.exe"));
@@ -44,12 +52,16 @@ namespace ConsoleApplication1
 
                 }
             }
-
-            
+            #endregion
+            // calc.exe "Sum" "1" "2"
 
             var calc = new Calc.Calc(operations);
 
-            var result = calc.Execute("Pi", new object[] { 1, 2});
+            var activeoper = args[0];
+            //var parameters = args.Skip(1).Select(a => (object) a).ToArray();
+            var parameters = args.Skip(1).ToArray();
+
+            var result = calc.Execute(activeoper, parameters);
             Console.WriteLine($"result = {result}");
 
             Console.ReadKey();

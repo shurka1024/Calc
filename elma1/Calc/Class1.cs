@@ -68,7 +68,7 @@ namespace Calc
         public string Name { get { return "Sum"; } }
         public object Execute(object[] args)
         {
-            return (int)args[0] + (int)args[1];
+            return Convert.ToInt64(args[0]) + Convert.ToInt64(args[1]);
         }
     }
 

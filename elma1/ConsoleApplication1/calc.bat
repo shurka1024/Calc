@@ -1,0 +1,1 @@
+calc.exe "sum" "1" "2"
