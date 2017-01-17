@@ -14,5 +14,9 @@ namespace ConsoleApplication1
         {
             return Math.PI;
         }
+        public object Execute(object arg)
+        {
+            return "Can't used";
+        }
     }
 }

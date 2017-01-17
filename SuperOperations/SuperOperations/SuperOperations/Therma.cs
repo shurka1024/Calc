@@ -14,5 +14,9 @@ namespace SuperOperations
         {
             return "Therma";
         }
+        public object Execute(object arg)
+        {
+            return "Can't used";
+        }
     }
 }

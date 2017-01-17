@@ -19,33 +19,26 @@ namespace Calc
             operations = opers;                     // Указываем список операций
         }
 
-        public Calc(IOperationEmpty[] opers)     // Конструктор
-        {
-            operations_empty = opers;                     // Указываем список операций
-        }
         public Calc(IEnumerable<IOperation> opers)     // Конструктор
         {
             operations = opers;                     // Указываем список операций
         }
 
+        public IEnumerable<string> GetOperationNames()
+        {
+            return operations.Select(o => o.Name);
+        }
+
         // Список всех операций
         private IEnumerable<IOperation> operations { get; set; }
-        private IOperationEmpty[] operations_empty { get; set; }
 
         public object Execute(string name, object[] args)
         {
             // Выбирем первую операцию с именем Name
-            var oper = operations.FirstOrDefault(oe => oe.Name == name);
+            var oper = operations.FirstOrDefault(oe => string.Compare(oe.Name, name, true) == 0);
             if (oper == null)
                 return $"Operation \" {name}\"not found";
             return oper.Execute(args);  // Выполняется метод с именем Name
-        }
-
-        public object ExecuteEmpty(string name)
-        {
-            // Выбирем первую операцию с именем Name
-            var oper = operations_empty.FirstOrDefault(oe => oe.Name == name);
-            return oper.Execute();  // Выполняется метод с именем Name
         }
 
     }
@@ -54,21 +47,31 @@ namespace Calc
     {
         string Name { get; }
         object Execute(object[] args);
+        object Execute(object arg);     // Пока нигде не вызывается
     }
 
-    public interface IOperationEmpty
-    {
-        string Name { get; }
-        object Execute();
-    }
+    //public interface ISingleOperation : IOperation
+    //{
+    //    object Execute(object arg);
+    //}
+
 
     // Реализация метода "Сложение"
     public class SumOperation : IOperation
     {
         public string Name { get { return "Sum"; } }
+
         public object Execute(object[] args)
         {
-            return Convert.ToInt64(args[0]) + Convert.ToInt64(args[1]);
+            if (Convert.ToString(args[0]) == "" || Convert.ToString(args[1]) == "")
+            {
+                return "Some parameters not assigned";
+            }
+            return Convert.ToInt32(args[0]) + Convert.ToInt32(args[1]);
+        }
+        public object Execute(object arg)
+        {
+            return "Can't used";
         }
     }
 
@@ -78,7 +81,15 @@ namespace Calc
         public string Name { get { return "Power"; } }
         public object Execute(object[] args)
         {
+            if (Convert.ToString(args[0]) == "" || Convert.ToString(args[1]) == "")
+            {
+                return "Some parameters not assigned";
+            }
             return System.Math.Pow(Convert.ToDouble(args[0]), Convert.ToDouble(args[1]));
+        }
+        public object Execute(object arg)
+        {
+            return "Can't used";
         }
     }
 
@@ -88,17 +99,29 @@ namespace Calc
         public string Name { get { return "Inc"; } }
         public object Execute(object[] args)
         {
-            return (int)args[0] + 1;
+            if (Convert.ToString(args[0]) == "")
+            {
+                return "Parameter not assigned";
+            }
+            return Convert.ToInt32(args[0]) + 1;
+        }
+        public object Execute(object arg)
+        {
+            return "Can't used";
         }
     }
 
     // Реализация метода "Короткое число Пи"
-    public class ShotPiOperation : IOperationEmpty
+    public class ShotPiOperation : IOperation
     {
         public string Name { get { return "ShotPi"; } }
-        public object Execute()
+        public object Execute(object[] args)
         {
             return 3.14;
+        }
+        public object Execute(object arg)
+        {
+            return "Can't used";
         }
     }
 }

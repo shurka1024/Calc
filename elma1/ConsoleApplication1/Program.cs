@@ -35,13 +35,10 @@ namespace ConsoleApplication1
 
                 foreach (var type in types)
                 {
-
                     var interfaces = type.GetInterfaces();
                     // Найти реализацию интерфейса IOperation
                     if (interfaces.Contains(typeof(IOperation)))
                     {
-                        Console.WriteLine(type.Name);
-
                         // Создать экземпляр класса и приводим его к нужному интерфейсу
                         var oper = Activator.CreateInstance(type) as IOperation;    // Приведение типов. Более безопасное. При деудачном приведении null
                         if (oper != null)

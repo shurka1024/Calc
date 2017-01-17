@@ -37,8 +37,8 @@ namespace UnitTestProject1
         [TestMethod]
         public void ShotPiTest()
         {
-            var calc = new C.Calc(new C.IOperationEmpty[] { new C.ShotPiOperation() });
-            var result = calc.ExecuteEmpty("ShotPi");
+            var calc = new C.Calc(new C.IOperation[] { new C.ShotPiOperation() });
+            var result = calc.Execute("ShotPi", new object[] { 4 });
             Assert.AreEqual(result, 3.14);
         }
     }
