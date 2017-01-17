@@ -23,15 +23,21 @@ namespace Calc
         {
             operations_empty = opers;                     // Указываем список операций
         }
+        public Calc(IEnumerable<IOperation> opers)     // Конструктор
+        {
+            operations = opers;                     // Указываем список операций
+        }
 
         // Список всех операций
-        private IOperation[] operations { get; set; }
+        private IEnumerable<IOperation> operations { get; set; }
         private IOperationEmpty[] operations_empty { get; set; }
 
         public object Execute(string name, object[] args)
         {
             // Выбирем первую операцию с именем Name
             var oper = operations.FirstOrDefault(oe => oe.Name == name);
+            if (oper == null)
+                return $"Operation \" {name}\"not found";
             return oper.Execute(args);  // Выполняется метод с именем Name
         }
 
