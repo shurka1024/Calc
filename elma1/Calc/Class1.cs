@@ -47,14 +47,7 @@ namespace Calc
     {
         string Name { get; }
         object Execute(object[] args);
-        object Execute(object arg);     // Пока нигде не вызывается
     }
-
-    //public interface ISingleOperation : IOperation
-    //{
-    //    object Execute(object arg);
-    //}
-
 
     // Реализация метода "Сложение"
     public class SumOperation : IOperation
@@ -68,10 +61,6 @@ namespace Calc
                 return "Some parameters not assigned";
             }
             return Convert.ToInt32(args[0]) + Convert.ToInt32(args[1]);
-        }
-        public object Execute(object arg)
-        {
-            return "Can't used";
         }
     }
 
@@ -87,10 +76,7 @@ namespace Calc
             }
             return System.Math.Pow(Convert.ToDouble(args[0]), Convert.ToDouble(args[1]));
         }
-        public object Execute(object arg)
-        {
-            return "Can't used";
-        }
+
     }
 
     // Реализация метода "Инкрементация"
@@ -105,10 +91,6 @@ namespace Calc
             }
             return Convert.ToInt32(args[0]) + 1;
         }
-        public object Execute(object arg)
-        {
-            return "Can't used";
-        }
     }
 
     // Реализация метода "Короткое число Пи"
@@ -118,10 +100,6 @@ namespace Calc
         public object Execute(object[] args)
         {
             return 3.14;
-        }
-        public object Execute(object arg)
-        {
-            return "Can't used";
         }
     }
 }

@@ -1,9 +1,13 @@
-﻿using System;
+﻿using Calc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Web.Models
 {
@@ -22,5 +26,9 @@ namespace Web.Models
         {
             return new object[] { X, Y };
         }
+
+        
     }
+
+    
 }

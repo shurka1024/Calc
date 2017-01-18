@@ -44,7 +44,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Calc">
+    <Reference Include="Calc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Calc\bin\Debug\Calc.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -80,6 +81,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MultiplicationOperation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MultiplicationOperation\MultiplicationOperation\bin\Debug\MultiplicationOperation.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperOperations, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SuperOperations\SuperOperations\SuperOperations\bin\Debug\SuperOperations.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -213,6 +222,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Calc.dll" />
+    <Content Include="App_Data\MultiplicationOperation.dll" />
+    <Content Include="App_Data\SuperOperations.dll" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -273,10 +285,9 @@
     <Content Include="Views\Calc\Execute.cshtml" />
     <Content Include="Views\Calc\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\ArgView.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\OperationView.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

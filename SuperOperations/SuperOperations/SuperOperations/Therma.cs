@@ -19,4 +19,17 @@ namespace SuperOperations
             return "Can't used";
         }
     }
+
+    public class Sum2 : IOperation
+    {
+        public string Name { get { return "Sum2"; } }
+        public object Execute(object[] args)
+        {
+            return Convert.ToInt32(args[0]) + Convert.ToInt32(args[1]); ;
+        }
+        public object Execute(object arg)
+        {
+            return "Can't used";
+        }
+    }
 }

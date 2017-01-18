@@ -11,12 +11,8 @@
 
 @using (Html.BeginForm("Execute", "Calc", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
-    <div class="form-group">
-        @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Name,  new { @class = "form-control" })
-        </div>
-    </div>
+    @Html.EditorFor(m => m.Name, "OperationView")
+
     @Html.EditorFor(m => m.X, "ArgView")
 
     @Html.EditorFor(m => m.Y, "ArgView")
