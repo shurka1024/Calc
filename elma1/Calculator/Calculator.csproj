@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MainOperations">
+      <HintPath>..\..\MainOperations\MainOperations\bin\Debug\MainOperations.dll</HintPath>
+    </Reference>
     <Reference Include="MultiplicationOperation">
       <HintPath>..\..\MultiplicationOperation\MultiplicationOperation\bin\Debug\MultiplicationOperation.dll</HintPath>
     </Reference>

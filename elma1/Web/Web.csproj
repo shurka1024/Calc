@@ -222,7 +222,11 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Calc.dll" />
+    <Content Include="App_Data\Database.mdf" />
+    <Content Include="App_Data\Database_log.ldf">
+      <DependentUpon>Database.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\MainOperations.dll" />
     <Content Include="App_Data\MultiplicationOperation.dll" />
     <Content Include="App_Data\SuperOperations.dll" />
     <Content Include="Content\bootstrap.css" />

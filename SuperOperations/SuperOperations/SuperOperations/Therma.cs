@@ -32,4 +32,14 @@ namespace SuperOperations
             return "Can't used";
         }
     }
+
+    //public class DivOperation2 : IOperationCount
+    //{
+    //    public int Count { get { return 1; } }
+    //    public string Name { get { return "ShotPi"; } }
+    //    public object Execute(object[] args)
+    //    {
+    //        return "DivResult";
+    //    }
+    //}
 }
