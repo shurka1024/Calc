@@ -1,17 +1,26 @@
 ﻿using Calc;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using Web.Models;
+using Web.Services;
 
 namespace Web.Controllers
 {
     public class CalcController : Controller
     {
+        private IOperationResultRepository repository {get; set;}
+
+        public CalcController()
+        {
+            repository = new OperationResultRepository();
+        }
+
         // GET: Calc
         public ActionResult Index()
         {
@@ -40,7 +49,23 @@ namespace Web.Controllers
             GetOperations(ref operations);
 
             var calc = new Calc.Calc(operations);
+
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+
             var result = calc.Execute(Convert.ToString(model.Name), model.GetParameters());
+
+            stopWatch.Stop();
+
+            var operResult = repository.Create();
+            operResult.ArgumentCount = model.GetParameters().Count();
+            operResult.Arguments = string.Join(",", model.GetParameters());
+            operResult.OperationId = repository.FindOperByName(model.Name).Id;
+            operResult.Result = result.ToString();
+            operResult.ExecTime_ms = stopWatch.ElapsedMilliseconds;
+
+            repository.Update(operResult);
+
             ViewData.Model = $"result = {result}";
             return View();
         }
