@@ -226,16 +226,8 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Operation.cs" />
     <Compile Include="Models\OperationModel.cs" />
-    <Compile Include="Models\OperationResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\CalcContext.cs" />
-    <Compile Include="Services\IEntityRepository.cs" />
-    <Compile Include="Services\IOperationRepository.cs" />
-    <Compile Include="Services\IOperationResultRepository.cs" />
-    <Compile Include="Services\OperationRepository.cs" />
-    <Compile Include="Services\OperationResultRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -309,7 +301,12 @@
     <Content Include="Views\Shared\EditorTemplates\OperationView.cshtml" />
     <Content Include="Views\OpertionResult\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ModelDomain\ModelDomain.csproj">
+      <Project>{812883EE-3AA7-4922-AC7A-DEE532F74126}</Project>
+      <Name>ModelDomain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

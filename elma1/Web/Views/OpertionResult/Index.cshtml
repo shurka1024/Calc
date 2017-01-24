@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Web.Models.OperationResult>
+﻿@model IEnumerable<Models.OperationResult>
 
 @{
     ViewBag.Title = "Index";
@@ -26,6 +26,9 @@
         <th>
             @Html.DisplayNameFor(model => model.ExecTime_ms)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
         <th></th>
     </tr>
 
@@ -45,6 +48,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ExecTime_ms)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => ( item.Users.LastName))
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

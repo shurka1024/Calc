@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Web.Services;
+using Services;
 
-namespace Web.Controllers
+namespace Controllers
 {
     public class OpertionResultController : Controller
     {
@@ -13,7 +13,7 @@ namespace Web.Controllers
 
         public OpertionResultController()
         {
-            repository = new OperationResultRepository();
+            repository = new NHOperationResultRepository();
         }
 
 
@@ -21,7 +21,8 @@ namespace Web.Controllers
         public ActionResult Index()
         {
             // нужно фильтровать операции - выводить только те, которые выполнялись дольше 1 секунды
-            var operations = repository.GetByFilter(1000);
+            //var operations = repository.GetByFilter(1000);
+            var operations = repository.GetAll();
             return View(operations);
         }
     }

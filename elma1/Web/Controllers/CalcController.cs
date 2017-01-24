@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using Web.Models;
-using Web.Services;
+using Services;
 
 namespace Web.Controllers
 {
@@ -18,7 +18,7 @@ namespace Web.Controllers
 
         public CalcController()
         {
-            repository = new OperationResultRepository();
+            repository = new NHOperationResultRepository();
         }
 
         // GET: Calc
@@ -60,9 +60,10 @@ namespace Web.Controllers
             var operResult = repository.Create();
             operResult.ArgumentCount = model.GetParameters().Count();
             operResult.Arguments = string.Join(",", model.GetParameters());
-            operResult.OperationId = repository.FindOperByName(model.Name).Id;
+            operResult.Operation = repository.FindOperByName(model.Name);
             operResult.Result = result.ToString();
             operResult.ExecTime_ms = stopWatch.ElapsedMilliseconds;
+            operResult.UserId = 2;
 
             repository.Update(operResult);
 
