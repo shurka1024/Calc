@@ -9,10 +9,13 @@ namespace DocRepositoryWeb.Controllers
 {
     public class DocumentController : Controller
     {
-        private IDocumentRepository repository { get; set; }
+        private static IDocumentRepository repository { get; set; }
         public DocumentController()
         {
-            repository = new DocumentRepository();
+            if (repository == null)
+            {
+                repository = new DocumentRepository();
+            }
         }
 
         // GET: Document

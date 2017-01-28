@@ -13,13 +13,19 @@ namespace DocRepositoryWeb.Controllers
     //[Authorize]
     public class CreateDocController : Controller
     {
-        private IDocumentRepository docrepository { get; set; }
-        private IUserRepository userrepository { get; set; }
+        private static IDocumentRepository docrepository { get; set; }
+        private static IUserRepository userrepository { get; set; }
 
         public CreateDocController()
         {
-            docrepository = new DocumentRepository();
-            userrepository = new UserRepository();
+            if (docrepository == null)
+            {
+                docrepository = new DocumentRepository();
+            }
+            if (userrepository == null)
+            {
+                userrepository = new UserRepository();
+            }
         }
 
         // GET: CreateDoc

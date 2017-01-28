@@ -1,0 +1,21 @@
+﻿@model ModelDomainDoc.Models.Document
+@{
+    ViewBag.Title = "Item";
+}
+
+<tr>
+    <th>
+        @Html.DisplayFor(model => model.Name)
+    </th>
+    <th>
+        @Html.DisplayFor(model => model.Autor.FullName)
+    </th>
+    <th>
+        @Html.DisplayFor(model => model.Date)
+    </th>
+    <th>
+        @Html.DisplayFor(model => model.BinaryFile)
+    </th>
+    <th></th>
+</tr>
+

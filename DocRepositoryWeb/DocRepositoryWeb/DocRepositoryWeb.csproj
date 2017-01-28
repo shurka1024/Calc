@@ -281,10 +281,11 @@
     <Content Include="Views\Document\Index.cshtml" />
     <Content Include="Views\Document\Item.cshtml" />
     <Content Include="Views\CreateDoc\Index.cshtml" />
-    <Content Include="Views\SearchDoc\Execute.cshtml" />
     <Content Include="Views\SearchDoc\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\StrView.cshtml" />
     <Content Include="Views\CreateDoc\Execute.cshtml" />
+    <Content Include="Views\SearchDoc\Item.cshtml" />
+    <Content Include="Views\SearchDoc\Execute.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

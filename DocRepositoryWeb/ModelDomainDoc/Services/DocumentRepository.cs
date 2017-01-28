@@ -1,5 +1,6 @@
 ﻿using DomainModel.Helpers;
 using ModelDomainDoc.Models;
+using NHibernate.Criterion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,17 @@ namespace ModelDomainDoc.Services
                 documents = criterion.List<Document>().ToList();
             }
             return documents;
+        }
+
+        public IEnumerable<Document> SearchByName(string name)
+        {
+            var documents = new List<Document>();
+            using (var sesson = NHibernateHelper.OpenSession())
+            {
+                documents = sesson.CreateCriteria<Document>()
+                    .Add(Restrictions.Like("Name", $"%{name}%")).List<Document>().ToList();
+            }
+            return documents;   
         }
     }
 }

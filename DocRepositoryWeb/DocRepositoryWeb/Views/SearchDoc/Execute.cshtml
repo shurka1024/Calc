@@ -3,16 +3,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Результат поиска</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Id)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -22,17 +19,12 @@
         <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BinaryFile)
-        </th>
         <th></th>
     </tr>
-    @if (Model != null)
+
+    @foreach (var item in Model)
     {
-        foreach (var item in Model)
-        {
-            @Html.Partial("Item", item)
-        }
+        @Html.Partial("Item", item)
     }
 
 </table>

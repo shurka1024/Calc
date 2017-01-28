@@ -4,36 +4,11 @@
     ViewBag.Title = "View";
 }
 
-<h2>View</h2>
+<h2>Поиск документов по названию</h2><br>
 
 @using (Html.BeginForm(Html.BeginForm("Execute", "SearchDoc", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))) 
 {
     @Html.EditorFor(m => m.Name, "StrView")
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.AutorId, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.AutorId, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.AutorId, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.BinaryFile, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.BinaryFile, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.BinaryFile, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
@@ -43,6 +18,3 @@
         
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
