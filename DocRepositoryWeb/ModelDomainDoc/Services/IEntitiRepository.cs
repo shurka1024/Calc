@@ -7,7 +7,7 @@ namespace ModelDomainDoc.Services
         T Create();
         //T Load(int Id);
         //bool Delete(int Id);
-        void Update(T clobject);
+        string Update(T clobject);
         IEnumerable<T> GetAll();
     }
 }

@@ -28,7 +28,7 @@ namespace DocRepositoryWeb.Controllers
 
         public ActionResult Execute(Document doc)
         {
-            var documents = repository.SearchByName(doc.Name)
+            var documents = repository.FindByName(doc.Name)
                 .OrderBy(d => d.Name)
                 .ThenBy(d => d.Date)
                 .ThenBy(d => d.Autor.LastName);

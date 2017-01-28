@@ -38,6 +38,7 @@ namespace DocRepositoryWeb.Controllers
         [HttpPost]
         public ActionResult Execute(HttpPostedFileBase file)
         {
+            var message = "";
             if (file != null)
             {
                 var dir = Server.MapPath("~/Files/");
@@ -47,7 +48,7 @@ namespace DocRepositoryWeb.Controllers
                 }
 
                 string fileName = Path.GetFileName(file.FileName);
-                string filePath = dir + fileName;
+                string filePath = "~/Files/" + fileName;
 
                 // Создадим запись в таблице БД
                 var doc = docrepository.Create();
@@ -56,10 +57,11 @@ namespace DocRepositoryWeb.Controllers
                 doc.Autor = userrepository.GetUserById(1);
                 doc.Date = System.DateTime.Now;
                 doc.BinaryFile = filePath;
-                docrepository.Update(doc);
+                message = docrepository.Update(doc);
 
                 file.SaveAs(filePath);
             }
+            ViewData.Model = message;
             return View();
         }
     }

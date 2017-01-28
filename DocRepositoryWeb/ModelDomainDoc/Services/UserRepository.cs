@@ -31,7 +31,7 @@ namespace ModelDomainDoc.Services
             return GetAll().Where(u => u.Id == id).FirstOrDefault();
         }
 
-        public void Update(User user)
+        public string Update(User user)
         {
             using (var session = NHibernateHelper.OpenSession())
             {
@@ -44,9 +44,10 @@ namespace ModelDomainDoc.Services
                     catch(Exception ex)
                     {
                         transaction.Rollback();
-                        return;
+                        return ex.Message;
                     }
                     transaction.Commit();
+                    return "Пользователь успешно добавлен";
                 }
             }
         }

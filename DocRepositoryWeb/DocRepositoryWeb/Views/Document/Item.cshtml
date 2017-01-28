@@ -14,7 +14,8 @@
         @Html.DisplayFor(model => model.Date)
     </th>
     <th>
-        @Html.DisplayFor(model => model.BinaryFile)
+        <li><a href="<%= Html.BuildUrlFromExpression<ReportController>(r => r.Reports(Model.Name)) %>"><%=Model.Name %></a></li>
+        @*@Html.ActionLink("Открыть файл", "OpenFile", new { filePath = Model.BinaryFile})*@
     </th>
     <th></th>
 </tr>

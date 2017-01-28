@@ -27,5 +27,15 @@ namespace DocRepositoryWeb.Controllers
                 .ThenBy(d => d.Autor.LastName);
             return View(documents);
         }
+
+        public ActionResult OpenFile(string filePath)
+        {
+            Response.WriteFile(Server.MapPath("~/Files/MyFile.pdf"));
+            //Response.ContentType = "application/pdf";
+            //Response.AppendHeader("Content-Disposition", "attachment; filename=MyFile.pdf");
+            //Response.TransmitFile(Server.MapPath("~/Files/MyFile.pdf"));
+            //Response.End();
+            return View("Index");
+        }
     }
 }

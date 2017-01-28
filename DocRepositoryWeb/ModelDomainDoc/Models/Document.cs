@@ -20,6 +20,7 @@ namespace ModelDomainDoc.Models
         public virtual DateTime Date { get; set; }
         [DisplayName("Автор")]
         public virtual int AutorId { get; set; }
+        [DisplayName("Выберите файл")]
         public virtual string BinaryFile { get; set; }
         public virtual User Autor { get; set; }
     }

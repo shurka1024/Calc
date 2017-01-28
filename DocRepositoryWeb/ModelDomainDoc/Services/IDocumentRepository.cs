@@ -6,6 +6,6 @@ namespace ModelDomainDoc.Services
 {
     public interface IDocumentRepository : IEntitiRepository<Document>
     {
-        IEnumerable<Document> SearchByName(string name);
+        IEnumerable<Document> FindByName(string name);
     }
 }

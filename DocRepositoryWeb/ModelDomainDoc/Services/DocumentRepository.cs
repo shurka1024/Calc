@@ -16,7 +16,7 @@ namespace ModelDomainDoc.Services
             return new Document() { Id = 0 };
         }
 
-        public void Update(Document doc)
+        public string Update(Document doc)
         {
             using (var session = NHibernateHelper.OpenSession())
             {
@@ -29,9 +29,10 @@ namespace ModelDomainDoc.Services
                     catch(Exception ex)
                     {
                         transaction.Rollback();
-                        return;
+                        return ex.Message;
                     }
                     transaction.Commit();
+                    return "Документ успешно добавлен в хранилище";
                 }
             }
         }
@@ -47,7 +48,7 @@ namespace ModelDomainDoc.Services
             return documents;
         }
 
-        public IEnumerable<Document> SearchByName(string name)
+        public IEnumerable<Document> FindByName(string name)
         {
             var documents = new List<Document>();
             using (var sesson = NHibernateHelper.OpenSession())
