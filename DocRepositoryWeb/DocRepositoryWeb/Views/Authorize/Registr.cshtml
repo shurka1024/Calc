@@ -1,0 +1,26 @@
+﻿@model DocRepositoryWeb.Models.RegistrModel
+
+@{
+    ViewBag.Title = "Регистрация";
+}
+
+<h2>Регистрация нового пользователя</h2><br>
+@using (Html.BeginForm(Html.BeginForm("Registr", "Authorize", FormMethod.Post, new { @class = "form-horizontal", role = "form" })))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.EditorFor(m => m.FirstName, "StrView")
+    @Html.EditorFor(m => m.LastName, "StrView")
+    @Html.EditorFor(m => m.Login, "StrView")
+    @Html.EditorFor(m => m.Password, "PasView")
+    @Html.EditorFor(m => m.Password2, "PasView")
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Вход" class="btn btn-default" />
+        </div>
+    </div>
+
+}
+
+

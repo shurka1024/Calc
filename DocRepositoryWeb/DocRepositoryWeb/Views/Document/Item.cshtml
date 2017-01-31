@@ -5,7 +5,7 @@
 
 <tr>
     <th>
-        @Html.DisplayFor(model => model.Name)
+        @Html.DisplayFor(model => model.ShotName)
     </th>
     <th>
         @Html.DisplayFor(model => model.Autor.FullName)
@@ -14,8 +14,7 @@
         @Html.DisplayFor(model => model.Date)
     </th>
     <th>
-        <li><a href="<%= Html.BuildUrlFromExpression<ReportController>(r => r.Reports(Model.Name)) %>"><%=Model.Name %></a></li>
-        @*@Html.ActionLink("Открыть файл", "OpenFile", new { filePath = Model.BinaryFile})*@
+        @Html.ActionLink("Открыть файл", "OpenFile", new { filePath = Model.BinaryFile, fileName = Model.Name})
     </th>
     <th></th>
 </tr>

@@ -51,5 +51,24 @@ namespace ModelDomainDoc.Services
                 }
             }
         }
+
+        public bool CheckUser(string login, string password)
+        {
+            int userscount = 0;
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                var criterion = session.CreateCriteria(typeof(User));
+                userscount = criterion.List<User>().Where(u => u.Login == login).Where(u => u.Password == password).Count();
+            }
+            if (userscount > 0)
+                return true;
+            else
+                return false;
+        }
+
+        public User GetUserByLogin(string login)
+        {
+            return GetAll().Where(u => u.Login == login).FirstOrDefault();
+        }
     }
 }

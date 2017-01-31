@@ -1,0 +1,23 @@
+﻿@model DocRepositoryWeb.Models.AuthorizeModel
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>Вход в систему</h2><br>
+@using (Html.BeginForm(Html.BeginForm("Execute", "Authorize", FormMethod.Post, new { @class = "form-horizontal", role = "form" })))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.EditorFor(m => m.Login, "StrView")
+    @Html.EditorFor(m => m.Password, "PasView")
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Вход" class="btn btn-default" />
+        </div>
+    </div>
+
+}
+
+

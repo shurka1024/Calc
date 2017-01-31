@@ -1,0 +1,13 @@
+﻿@model string
+
+@{ 
+    Layout = null;
+}
+
+<div class="form-group">
+    @Html.LabelFor(m => m, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.PasswordFor(m => m, new { @class = "form-control" } )
+        @Html.ValidationMessageFor(m => m)
+    </div>
+</div>

@@ -1,4 +1,5 @@
-﻿using ModelDomainDoc.Services;
+﻿using ModelDomainDoc.Models;
+using ModelDomainDoc.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Web.Mvc;
 
 namespace DocRepositoryWeb.Controllers
 {
+    [Authorize]
     public class DocumentController : Controller
     {
         private static IDocumentRepository repository { get; set; }
@@ -24,18 +26,16 @@ namespace DocRepositoryWeb.Controllers
             var documents = repository.GetAll()
                 .OrderBy(d => d.Name)
                 .ThenBy(d => d.Date)
-                .ThenBy(d => d.Autor.LastName);
+                .ThenBy(d => d.Autor.LastName).ToList();
             return View(documents);
         }
 
-        public ActionResult OpenFile(string filePath)
+        public ActionResult OpenFile(string filePath, string fileName)
         {
-            Response.WriteFile(Server.MapPath("~/Files/MyFile.pdf"));
-            //Response.ContentType = "application/pdf";
-            //Response.AppendHeader("Content-Disposition", "attachment; filename=MyFile.pdf");
-            //Response.TransmitFile(Server.MapPath("~/Files/MyFile.pdf"));
-            //Response.End();
-            return View("Index");
+            Response.AppendHeader("Content-Disposition", $"attachment; filename={fileName}");
+            Response.TransmitFile(Server.MapPath(filePath));
+            Response.End();
+            return Index();
         }
     }
 }
