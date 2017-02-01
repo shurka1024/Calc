@@ -6,7 +6,7 @@
 
 <h2>Поиск документов по названию</h2><br>
 
-@using (Html.BeginForm(Html.BeginForm("Index", "SearchDoc", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))) 
+@using (Html.BeginForm(Html.BeginForm("SearchDoc", "Document", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))) 
 {
     @Html.EditorFor(m => m.Name, "StrView")
 

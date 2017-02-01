@@ -7,5 +7,6 @@ namespace ModelDomainDoc.Services
     public interface IDocumentRepository : IEntitiRepository<Document>
     {
         IEnumerable<Document> FindByName(string name);
+        Document GetDocByName(string name);
     }
 }

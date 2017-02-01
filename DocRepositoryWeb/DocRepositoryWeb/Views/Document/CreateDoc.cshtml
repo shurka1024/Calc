@@ -6,7 +6,7 @@
 
 <h2>Создание нового документа</h2> <br>
 
-@using (Html.BeginForm("Execute", "CreateDoc", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("CreateDoc", "Document", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="form-group">
         @Html.LabelFor(model => model.BinaryFile, htmlAttributes: new { @class = "control-label col-md-2" })

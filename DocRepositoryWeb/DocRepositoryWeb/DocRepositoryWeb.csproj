@@ -198,11 +198,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AuthorizeController.cs" />
-    <Compile Include="Controllers\CreateDocController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\SearchDocController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -273,12 +271,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Document\Index.cshtml" />
     <Content Include="Views\Document\Item.cshtml" />
-    <Content Include="Views\CreateDoc\Index.cshtml" />
-    <Content Include="Views\SearchDoc\Index.cshtml" />
+    <Content Include="Views\Document\CreateDoc.cshtml" />
+    <Content Include="Views\Document\SearchDoc.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\StrView.cshtml" />
-    <Content Include="Views\CreateDoc\Execute.cshtml" />
-    <Content Include="Views\SearchDoc\Item.cshtml" />
-    <Content Include="Views\SearchDoc\Execute.cshtml" />
     <Content Include="Views\Authorize\Execute.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\PasView.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -295,6 +290,7 @@
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Authorize\Registr.cshtml" />
     <Content Include="Views\Authorize\Result.cshtml" />
+    <Content Include="Views\Document\Info.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

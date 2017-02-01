@@ -58,5 +58,11 @@ namespace ModelDomainDoc.Services
             }
             return documents;   
         }
+
+        public Document GetDocByName(string name)
+        {
+            var doc = GetAll().Where(d => d.Name == name).FirstOrDefault();
+            return doc;
+        }
     }
 }
